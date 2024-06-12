@@ -1,0 +1,1733 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/17/2024 10:52:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-6EJBJ5S"
+  DTS:CreatorName="DESKTOP-6EJBJ5S\SARA ADEL"
+  DTS:DTSID="{63EFEE89-08DD-41A3-89E1-7CAC6ADDCCD7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Order"
+  DTS:PackageType="5"
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{2048944F-4DC4-4218-A6C0-F362EA6C18C2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.BikeStores]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E40F0EB0-069C-4293-A8A4-7CD03630F69F}"
+      DTS:ObjectName="DESKTOP-6EJBJ5S.BikeStores">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-6EJBJ5S;Initial Catalog=BikeStores;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package2-{E40F0EB0-069C-4293-A8A4-7CD03630F69F}DESKTOP-6EJBJ5S.BikeStores;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A24C2425-7995-4F1C-A1AC-46FAAE31A0B1}"
+      DTS:ObjectName="DESKTOP-6EJBJ5S.STG_BikeStores">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-6EJBJ5S;Initial Catalog=STG_BikeStores;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package2-{A24C2425-7995-4F1C-A1AC-46FAAE31A0B1}DESKTOP-6EJBJ5S.STG_BikeStores;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6C129300-B48A-41F1-9CD8-47989946EE4D}"
+      DTS:ObjectName="DESKTOP-6EJBJ5S.STG_BikeStores 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-6EJBJ5S;Initial Catalog=STG_BikeStores;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package2-{6C129300-B48A-41F1-9CD8-47989946EE4D}DESKTOP-6EJBJ5S.STG_BikeStores 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4BD35717-CCD1-4AA1-A983-EB7159325AC0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="last_extract_date">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1950 10:53:00 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C5B9B922-B085-470F-B045-218F373E105E}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT  * &#xA;FROM sales.orders  &#xA;WHERE last_date&gt; '&quot; + (DT_WSTR, 50) @[User::last_extract_date]  + &quot;';&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_Select_Statement">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT  * 
+FROM sales.orders  
+WHERE last_date&gt; '1/1/1950 10:53:00 PM';</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{95CAF11E-540B-42FD-85B3-E2A5C75F97B0}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;UPDATE STG.Conf_Table&#xA; SET last_extract_date = (SELECT ISNULL(MAX(src_update_date), last_extract_date)FROM STG.STG_Orders)&#xA;WHERE table_name = 'STG_Orders';&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_Update_Conf_Table">
+      <DTS:VariableValue
+        DTS:DataType="8">UPDATE STG.Conf_Table
+ SET last_extract_date = (SELECT ISNULL(MAX(src_update_date), last_extract_date)FROM STG.STG_Orders)
+WHERE table_name = 'STG_Orders';</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FE472960-F2B9-484F-A202-E4CAE5B99E1B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\DIM_Orders"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DIM_Orders"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DIM].[DIM_Orders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\DIM_Orders.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].Columns[customer_id]"
+                      cachedDataType="i4"
+                      cachedName="customer_id"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].Columns[order_status]"
+                      cachedDataType="ui1"
+                      cachedName="order_status"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[order_status]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[order_status]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].Columns[order_date]"
+                      cachedDataType="dbDate"
+                      cachedName="order_date"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[order_date]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[order_date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].Columns[required_date]"
+                      cachedDataType="dbDate"
+                      cachedName="required_date"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[required_date]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[required_date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].Columns[shipped_date]"
+                      cachedDataType="dbDate"
+                      cachedName="shipped_date"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[shipped_date]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[shipped_date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].Columns[store_id]"
+                      cachedDataType="i4"
+                      cachedName="store_id"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[store_id]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[store_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].Columns[staff_id]"
+                      cachedDataType="i4"
+                      cachedName="staff_id"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[staff_id]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[staff_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].Columns[create_timestamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="create_timestamp"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[create_timestamp]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[create_timestamp]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      externalMetadataColumnId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[src_id]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[order_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[Order_ID]"
+                      dataType="i4"
+                      name="Order_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[src_id]"
+                      dataType="i4"
+                      name="src_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[order_status]"
+                      dataType="ui1"
+                      name="order_status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[order_date]"
+                      dataType="dbDate"
+                      name="order_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[required_date]"
+                      dataType="dbDate"
+                      name="required_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[shipped_date]"
+                      dataType="dbDate"
+                      name="shipped_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[store_id]"
+                      dataType="i4"
+                      name="store_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[staff_id]"
+                      dataType="i4"
+                      name="staff_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input].ExternalColumns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="create_timestamp" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DIM_Orders.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DIM_Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DIM_Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DIM].[DIM_Orders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DIM].[DIM_Orders]) [refTable]
+where [refTable].[src_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Order_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="src_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customer_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="order_status" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="order_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="required_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="shipped_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="store_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="staff_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="create_timestamp" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[order_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[order_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">src_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\STG_Orders"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="STG_Orders"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[STG_Orders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\STG_Orders.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[order_status]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_status]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[order_status]"
+                      name="order_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[order_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_date]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[order_date]"
+                      name="order_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[required_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[required_date]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[required_date]"
+                      name="required_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[shipped_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[shipped_date]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[shipped_date]"
+                      name="shipped_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[store_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[store_id]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[store_id]"
+                      name="store_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[staff_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[staff_id]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[staff_id]"
+                      name="staff_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[create_timestamp]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[create_timestamp]"
+                      name="create_timestamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[order_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[order_id]"
+                      name="order_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[src_update_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[src_update_date]"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].Columns[src_update_date]"
+                      name="src_update_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_status]"
+                      dataType="ui1"
+                      name="order_status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_date]"
+                      dataType="dbDate"
+                      name="order_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[required_date]"
+                      dataType="dbDate"
+                      name="required_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[shipped_date]"
+                      dataType="dbDate"
+                      name="shipped_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[store_id]"
+                      dataType="i4"
+                      name="store_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[staff_id]"
+                      dataType="i4"
+                      name="staff_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="create_timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      dataType="i4"
+                      name="order_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output].ExternalColumns[src_update_date]"
+                      dataType="dbTimeStamp"
+                      name="src_update_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      name="order_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[order_status]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[order_status]"
+                      name="order_status" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[order_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[order_date]"
+                      name="order_date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[required_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[required_date]"
+                      name="required_date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[shipped_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[shipped_date]"
+                      name="shipped_date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[store_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[store_id]"
+                      name="store_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[staff_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[staff_id]"
+                      name="staff_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[src_update_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[src_update_date]"
+                      name="src_update_date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[create_timestamp]"
+                      name="create_timestamp" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
+              endId="Package\Data Flow Task\DIM_Orders.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\STG_Orders.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{f92c67fb-8956-4b6c-bee8-cfa18f91adf1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A24C2425-7995-4F1C-A1AC-46FAAE31A0B1}"
+          SQLTask:SqlStmtSourceType="Variable"
+          SQLTask:SqlStatementSource="User::SQL_Update_Conf_Table" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Last Extract Date"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6ec39f50-2822-451d-90bc-51bfe5597574}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Last Extract Date"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A24C2425-7995-4F1C-A1AC-46FAAE31A0B1}"
+          SQLTask:SqlStatementSource="SELECT last_extract_date&#xA;FROM     STG.Conf_Table&#xA;WHERE  (table_name = 'STG_Orders')"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::last_extract_date" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load STG Orders"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1055615d-c9fd-4e20-8323-ea448cd5a38b}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load STG Orders">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load STG Orders\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load STG Orders\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Orders\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load STG Orders\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Orders\Derived Column 1.Outputs[Derived Column Output].Columns[time_stamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load STG Orders\Derived Column 1.Outputs[Derived Column Output].Columns[time_stamp]"
+                      name="time_stamp"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load STG Orders\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load STG Orders\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Orders\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Orders\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Orders\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Orders\SRC_DB_Orders"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC_DB_Orders"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[sales].[customers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * 
+FROM dbo.customer
+WHERE last_update &gt; @Last_Extract_Date</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::SQL_Select_Statement</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Orders\SRC_DB_Orders.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6EJBJ5S.BikeStores]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.BikeStores]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[last_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[last_date]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[last_date]"
+                      name="last_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[order_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[order_id]"
+                      name="order_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[order_status]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_status]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[order_status]"
+                      name="order_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[order_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_date]"
+                      length="10"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[order_date]"
+                      name="order_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[required_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[required_date]"
+                      length="10"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[required_date]"
+                      name="required_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[shipped_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[shipped_date]"
+                      length="10"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[shipped_date]"
+                      name="shipped_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[store_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[store_id]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[store_id]"
+                      name="store_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[staff_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[staff_id]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[staff_id]"
+                      name="staff_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[last_date]"
+                      dataType="dbTimeStamp"
+                      name="last_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      dataType="i4"
+                      name="order_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_status]"
+                      dataType="ui1"
+                      name="order_status" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_date]"
+                      dataType="dbDate"
+                      name="order_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[required_date]"
+                      dataType="dbDate"
+                      name="required_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[shipped_date]"
+                      dataType="dbDate"
+                      name="shipped_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[store_id]"
+                      dataType="i4"
+                      name="store_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].ExternalColumns[staff_id]"
+                      dataType="i4"
+                      name="staff_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      name="order_id" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[order_status]"
+                      dataType="ui1"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[order_status]"
+                      name="order_status" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[order_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[order_date]"
+                      name="order_date" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[required_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[required_date]"
+                      name="required_date" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[shipped_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[shipped_date]"
+                      name="shipped_date" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[store_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[store_id]"
+                      name="store_id" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[staff_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[staff_id]"
+                      name="staff_id" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[last_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Error Output].Columns[last_date]"
+                      name="last_date" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load STG Orders\TGT_DB_STG_Orders"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="TGT_DB_STG_Orders"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[STG_Orders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load STG Orders\TGT_DB_STG_Orders.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].Columns[time_stamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="time_stamp"
+                      externalMetadataColumnId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[create_timestamp]"
+                      lineageId="Package\Load STG Orders\Derived Column 1.Outputs[Derived Column Output].Columns[time_stamp]" />
+                    <inputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].Columns[last_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="last_date"
+                      externalMetadataColumnId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[src_update_date]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[last_date]" />
+                    <inputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      externalMetadataColumnId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[order_id]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[order_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].Columns[customer_id]"
+                      cachedDataType="i4"
+                      cachedName="customer_id"
+                      externalMetadataColumnId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].Columns[order_status]"
+                      cachedDataType="ui1"
+                      cachedName="order_status"
+                      externalMetadataColumnId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[order_status]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[order_status]" />
+                    <inputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].Columns[order_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="order_date"
+                      externalMetadataColumnId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[order_date]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[order_date]" />
+                    <inputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].Columns[required_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="required_date"
+                      externalMetadataColumnId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[required_date]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[required_date]" />
+                    <inputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].Columns[shipped_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="shipped_date"
+                      externalMetadataColumnId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[shipped_date]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[shipped_date]" />
+                    <inputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].Columns[store_id]"
+                      cachedDataType="i4"
+                      cachedName="store_id"
+                      externalMetadataColumnId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[store_id]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[store_id]" />
+                    <inputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].Columns[staff_id]"
+                      cachedDataType="i4"
+                      cachedName="staff_id"
+                      externalMetadataColumnId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[staff_id]"
+                      lineageId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output].Columns[staff_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[src_update_date]"
+                      dataType="dbTimeStamp"
+                      name="src_update_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="create_timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[order_id]"
+                      dataType="i4"
+                      name="order_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[order_status]"
+                      dataType="ui1"
+                      name="order_status" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[order_date]"
+                      dataType="dbDate"
+                      name="order_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[required_date]"
+                      dataType="dbDate"
+                      name="required_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[shipped_date]"
+                      dataType="dbDate"
+                      name="shipped_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[store_id]"
+                      dataType="i4"
+                      name="store_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input].ExternalColumns[staff_id]"
+                      dataType="i4"
+                      name="staff_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load STG Orders\TGT_DB_STG_Orders.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Orders\TGT_DB_STG_Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load STG Orders\TGT_DB_STG_Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load STG Orders\TGT_DB_STG_Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load STG Orders.Paths[Derived Column Output]"
+              endId="Package\Load STG Orders\TGT_DB_STG_Orders.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load STG Orders\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load STG Orders.Paths[OLE DB Source Output]"
+              endId="Package\Load STG Orders\Derived Column 1.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load STG Orders\SRC_DB_Orders.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG Orders"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3fe32562-48a7-4d84-ad8e-cbc2d9eecbca}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG Orders"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A24C2425-7995-4F1C-A1AC-46FAAE31A0B1}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.STG_Orders;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{47e3dab9-7183-4d83-a97c-22ffea7cfbce}"
+      DTS:From="Package\Get Last Extract Date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load STG Orders" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{14e2b858-0d31-40a6-8c1c-fd761be9685c}"
+      DTS:From="Package\Truncate STG Orders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Get Last Extract Date" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{1044B567-60D6-48E2-BC1A-98FD8D28D47C}"
+      DTS:From="Package\Load STG Orders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Data Flow Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{35A0E54E-A835-4589-96FD-C00034033FE9}"
+      DTS:From="Package\Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Execute SQL Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="323.33331566718,317.199997794231" />
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="312.745210052463,386.177775586071" />
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\Get Last Extract Date"
+          TopLeft="313.321414430912,169.582352616007" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Load STG Orders"
+          TopLeft="314.698398592798,249.497385184866" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Truncate STG Orders"
+          TopLeft="312.499986204009,91.1999997830393" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="398.409906511855,211.182352616007">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.315032568859"
+              Start="0,0"
+              End="0,30.815032568859">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.815032568859" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="401.91070031746,132.799999783039">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.7823528329679"
+              Start="0,0"
+              End="0,29.2823528329679">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.2823528329679" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="396.615857129989,291.097385184866">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.1026126093647"
+              Start="0,0"
+              End="0,18.6026126093647">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.6026126093647" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="401.439262859822,358.799997794231">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.3777777918395"
+              Start="0,0"
+              End="0,19.8777777918395">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.8777777918395" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\Data Flow Task\STG_Orders"
+          TopLeft="383.333312388924,129.999999095996" />
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\Data Flow Task\Lookup"
+          TopLeft="417.499977188807,225.333331766394" />
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\Data Flow Task\DIM_Orders"
+          TopLeft="378.333312662112,329.333331043191" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="452.133312388924,171.599999095996">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.766664799883,53.733332670398"
+              Start="0,0"
+              End="21.766664799883,46.233332670398">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.866666335199" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.866666335199"
+                    Point2="0,26.866666335199"
+                    Point3="4,26.866666335199" />
+                  <mssgle:LineSegment
+                    End="17.766664799883,26.866666335199" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.766664799883,26.866666335199"
+                    Point2="21.766664799883,26.866666335199"
+                    Point3="21.766664799883,30.866666335199" />
+                  <mssgle:LineSegment
+                    End="21.766664799883,46.233332670398" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="473.899977188807,266.933331766394">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-27.966664526695,62.399999276797"
+              Start="0,0"
+              End="-27.966664526695,54.899999276797">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.1999996383985" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.1999996383985"
+                    Point2="0,31.1999996383985"
+                    Point3="-4,31.1999996383985" />
+                  <mssgle:LineSegment
+                    End="-23.966664526695,31.1999996383985" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23.966664526695,31.1999996383985"
+                    Point2="-27.966664526695,31.1999996383985"
+                    Point3="-27.966664526695,35.1999996383985" />
+                  <mssgle:LineSegment
+                    End="-27.966664526695,54.899999276797" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-69.7897189820975,36.1999996383985,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\STG_Orders">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DIM].[DIM_Orders]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\DIM_Orders">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load STG Orders">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="184,41.6"
+          Id="Package\Load STG Orders\TGT_DB_STG_Orders"
+          TopLeft="315.70512552069,287.505124153161" />
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Load STG Orders\SRC_DB_Orders"
+          TopLeft="315.318679004252,88.4421231002565" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Load STG Orders\Derived Column 1"
+          TopLeft="306.128203495445,181.34358667095" />
+        <EdgeLayout
+          Id="Package\Load STG Orders.Paths[Derived Column Output]"
+          TopLeft="404.516664508068,222.94358667095">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.5615374822108"
+              Start="0,0"
+              End="0,57.0615374822108">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.0615374822108" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load STG Orders.Paths[OLE DB Source Output]"
+          TopLeft="397.923441249849,130.042123100257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.3014635706939"
+              Start="0,0"
+              End="0,43.8014635706939">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.8014635706939" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Orders\TGT_DB_STG_Orders">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load STG Orders\SRC_DB_Orders">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

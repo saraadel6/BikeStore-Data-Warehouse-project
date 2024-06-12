@@ -1,0 +1,2159 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/18/2024 4:04:42 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-6EJBJ5S"
+  DTS:CreatorName="DESKTOP-6EJBJ5S\SARA ADEL"
+  DTS:DTSID="{2F435B30-E278-4534-91CA-8B11962FB88A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package9"
+  DTS:PackageType="5"
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{B7C85536-723E-4AF0-BBD7-5F985380D63A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.master]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{485CB772-2DBA-422D-8F51-73C6F7D39828}"
+      DTS:ObjectName="DESKTOP-6EJBJ5S.master">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-6EJBJ5S;Initial Catalog=master;Integrated Security=True;Application Name=SSIS-Package9-{485CB772-2DBA-422D-8F51-73C6F7D39828}DESKTOP-6EJBJ5S.master;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.Sara]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{9B83EF27-ACD3-4C33-9BF0-69B8A5CAF65E}"
+      DTS:ObjectName="DESKTOP-6EJBJ5S.Sara">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-6EJBJ5S;Initial Catalog=Sara;Integrated Security=True;Application Name=SSIS-Package9-{9B83EF27-ACD3-4C33-9BF0-69B8A5CAF65E}DESKTOP-6EJBJ5S.Sara;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{68175ED6-65A9-41DB-A34A-6E94B7A08126}"
+      DTS:ObjectName="DESKTOP-6EJBJ5S.STG_BikeStores">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-6EJBJ5S;Initial Catalog=STG_BikeStores;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package9-{68175ED6-65A9-41DB-A34A-6E94B7A08126}DESKTOP-6EJBJ5S.STG_BikeStores;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{29BDA388-BBD3-4CAA-8BFD-C3F8122789CA}"
+      DTS:ObjectName="DESKTOP-6EJBJ5S.STG_BikeStores 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-6EJBJ5S;Initial Catalog=STG_BikeStores;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package6-{29BDA388-BBD3-4CAA-8BFD-C3F8122789CA}DESKTOP-6EJBJ5S.STG_BikeStores;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load TO Fact_Items"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5EA62CF6-2B4B-4C00-9677-337B9E759E83}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load TO Fact_Items"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load TO Fact_Items\DATE KEY"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DATE KEY"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load TO Fact_Items\DATE KEY.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\DATE KEY.Inputs[Derived Column Input].Columns[order_date]"
+                      cachedDataType="dbDate"
+                      cachedName="order_date"
+                      lineageId="Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[order_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load TO Fact_Items\DATE KEY.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load TO Fact_Items\DATE KEY.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\DATE KEY.Outputs[Derived Column Output].Columns[DATE_KEY]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load TO Fact_Items\DATE KEY.Outputs[Derived Column Output].Columns[DATE_KEY]"
+                      name="DATE_KEY"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)[REPLACE]([LEFT]((DT_WSTR,50)(DT_DBTIMESTAMP)#{Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[order_date]},10),"-","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)REPLACE(LEFT((DT_WSTR,50)(DT_DBTIMESTAMP)order_date,10),"-","")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load TO Fact_Items\DATE KEY.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load TO Fact_Items\DATE KEY.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\DATE KEY.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\DATE KEY.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\DATE KEY.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\DATE KEY.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TO Fact_Items\DIM_Customer"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="DIM_Customer"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DIM].[DIM_Customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DIM].[DIM_Customer]) [refTable]
+where [refTable].[src_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="customer_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="src_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="first_name" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="last_name" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="phone" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="email" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="street" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="city" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="state" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="create_timestamp" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[customer_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load TO Fact_Items\DIM_Customer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load TO Fact_Items\DIM_Customer.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\DIM_Customer.Inputs[Lookup Input].Columns[customer_id]"
+                      cachedDataType="i4"
+                      cachedName="customer_id"
+                      lineageId="Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[customer_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">src_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load TO Fact_Items\DIM_Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup Match Output].Columns[customer_id_lookup]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup Match Output].Columns[customer_id_lookup]"
+                      name="customer_id_lookup"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">src_id</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load TO Fact_Items\DIM_Customer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load TO Fact_Items\DIM_Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TO Fact_Items\DIM_DATE"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="DIM_DATE"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DIM].[D_Date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DIM].[D_Date]) [refTable]
+where [refTable].[DateKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Day" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DaySuffix" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Weekday" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WeekDayName" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WeekDayName_Short" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WeekDayName_FirstLetter" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DOWInMonth" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayOfYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WeekOfMonth" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WeekOfYear" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MonthName" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MonthName_Short" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MonthName_FirstLetter" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Quarter" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="QuarterName" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MMYYYY" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MonthYear" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsWeekend" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsHoliday" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HolidayName" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SpecialDays" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FinancialYear" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FinancialQuater" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FinancialMonth" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstDateofYear" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastDateofYear" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstDateofQuater" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastDateofQuater" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstDateofMonth" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastDateofMonth" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstDateofWeek" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastDateofWeek" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrentYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrentQuater" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrentMonth" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrentWeek" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrentDay" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load TO Fact_Items\DATE KEY.Outputs[Derived Column Output].Columns[DATE_KEY]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load TO Fact_Items\DIM_DATE.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load TO Fact_Items\DIM_DATE.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\DIM_DATE.Inputs[Lookup Input].Columns[DATE_KEY]"
+                      cachedDataType="i4"
+                      cachedName="DATE_KEY"
+                      lineageId="Package\Load TO Fact_Items\DATE KEY.Outputs[Derived Column Output].Columns[DATE_KEY]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">DateKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load TO Fact_Items\DIM_DATE.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Match Output].Columns[Quarter]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Match Output].Columns[Quarter]"
+                      name="Quarter"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Quarter</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Match Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Match Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Year</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load TO Fact_Items\DIM_DATE.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load TO Fact_Items\DIM_DATE.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TO Fact_Items\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load TO Fact_Items\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\Merge Join.Inputs[Merge Join Left Input].Columns[src_id]"
+                      cachedDataType="i4"
+                      cachedName="src_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output].Columns[src_id]" />
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\Merge Join.Inputs[Merge Join Left Input].Columns[order_date]"
+                      cachedDataType="dbDate"
+                      cachedName="order_date"
+                      lineageId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output].Columns[order_date]" />
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\Merge Join.Inputs[Merge Join Left Input].Columns[customer_id]"
+                      cachedDataType="i4"
+                      cachedName="customer_id"
+                      lineageId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output].Columns[customer_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Load TO Fact_Items\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\Merge Join.Inputs[Merge Join Right Input].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Load TO Fact_Items\Sort 1.Outputs[Sort Output].Columns[order_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[order_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[order_id]"
+                      name="order_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load TO Fact_Items\Merge Join.Inputs[Merge Join Right Input].Columns[order_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[order_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[order_date]"
+                      name="order_date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load TO Fact_Items\Merge Join.Inputs[Merge Join Left Input].Columns[order_date]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[customer_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[customer_id]"
+                      name="customer_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load TO Fact_Items\Merge Join.Inputs[Merge Join Left Input].Columns[customer_id]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TO Fact_Items\NUM_Items"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="NUM_Items"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load TO Fact_Items\NUM_Items.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\NUM_Items.Inputs[Aggregate Input 1].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      lineageId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Match Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\NUM_Items.Inputs[Aggregate Input 1].Columns[Quarter]"
+                      cachedDataType="ui1"
+                      cachedName="Quarter"
+                      lineageId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Match Output].Columns[Quarter]" />
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\NUM_Items.Inputs[Aggregate Input 1].Columns[customer_id_lookup]"
+                      cachedDataType="i4"
+                      cachedName="customer_id_lookup"
+                      lineageId="Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup Match Output].Columns[customer_id_lookup]" />
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\NUM_Items.Inputs[Aggregate Input 1].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[order_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[Year]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[Year]"
+                      name="Year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Match Output].Columns[Year]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[Quarter]"
+                      dataType="ui1"
+                      lineageId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[Quarter]"
+                      name="Quarter">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Match Output].Columns[Quarter]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[customer_id_lookup]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[customer_id_lookup]"
+                      name="customer_id_lookup">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup Match Output].Columns[customer_id_lookup]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[order_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[order_id]"
+                      name="order_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output].Columns[order_id]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[Count all]"
+                      dataType="ui8"
+                      lineageId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[Count all]"
+                      name="Count all">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load TO Fact_Items\0:invalid}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">2</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TO Fact_Items\OLE DB DIM_Orders"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB DIM_Orders"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DIM].[DIM_Orders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[Order_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[Order_ID]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[Order_ID]"
+                      name="Order_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[src_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[src_id]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[src_id]"
+                      name="src_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[order_status]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_status]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[order_status]"
+                      name="order_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[order_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_date]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[order_date]"
+                      name="order_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[required_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[required_date]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[required_date]"
+                      name="required_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[shipped_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[shipped_date]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[shipped_date]"
+                      name="shipped_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[store_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[store_id]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[store_id]"
+                      name="store_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[staff_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[staff_id]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[staff_id]"
+                      name="staff_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[create_timestamp]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[create_timestamp]"
+                      name="create_timestamp"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[Order_ID]"
+                      dataType="i4"
+                      name="Order_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[src_id]"
+                      dataType="i4"
+                      name="src_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_status]"
+                      dataType="ui1"
+                      name="order_status" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[order_date]"
+                      dataType="dbDate"
+                      name="order_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[required_date]"
+                      dataType="dbDate"
+                      name="required_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[shipped_date]"
+                      dataType="dbDate"
+                      name="shipped_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[store_id]"
+                      dataType="i4"
+                      name="store_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[staff_id]"
+                      dataType="i4"
+                      name="staff_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].ExternalColumns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="create_timestamp" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[Order_ID]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[Order_ID]"
+                      name="Order_ID" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[src_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[src_id]"
+                      name="src_id" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[order_status]"
+                      dataType="ui1"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[order_status]"
+                      name="order_status" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[order_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[order_date]"
+                      name="order_date" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[required_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[required_date]"
+                      name="required_date" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[shipped_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[shipped_date]"
+                      name="shipped_date" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[store_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[store_id]"
+                      name="store_id" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[staff_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[staff_id]"
+                      name="staff_id" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[create_timestamp]"
+                      name="create_timestamp" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB DIM_Order_Items"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DIM].[DIM_Order_items]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[create_timestamp]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[create_timestamp]"
+                      name="create_timestamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[Order_item_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[Order_item_ID]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[Order_item_ID]"
+                      name="Order_item_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[order_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[order_id]"
+                      name="order_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[item_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[item_id]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[item_id]"
+                      name="item_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[product_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="product_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[quantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[quantity]"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[quantity]"
+                      name="quantity"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="create_timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[Order_item_ID]"
+                      dataType="i4"
+                      name="Order_item_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      dataType="i4"
+                      name="order_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[item_id]"
+                      dataType="i4"
+                      name="item_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].ExternalColumns[quantity]"
+                      dataType="i4"
+                      name="quantity" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[Order_item_ID]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[Order_item_ID]"
+                      name="Order_item_ID" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      name="order_id" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[item_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[item_id]"
+                      name="item_id" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[quantity]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[quantity]"
+                      name="quantity" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[create_timestamp]"
+                      name="create_timestamp" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TO Fact_Items\OLE DB Fact_Items"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Fact_Items"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DIM].[Fact_Items]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6EJBJ5S.STG_BikeStores]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                      lineageId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].Columns[Quarter]"
+                      cachedDataType="ui1"
+                      cachedName="Quarter"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      lineageId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[Quarter]" />
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].Columns[Count all]"
+                      cachedDataType="ui8"
+                      cachedName="Count all"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].ExternalColumns[NumOfItems]"
+                      lineageId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[Count all]" />
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].Columns[customer_id_lookup]"
+                      cachedDataType="i4"
+                      cachedName="customer_id_lookup"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].ExternalColumns[Customer_ID]"
+                      lineageId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[customer_id_lookup]" />
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      externalMetadataColumnId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].ExternalColumns[Order_ID]"
+                      lineageId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1].Columns[order_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].ExternalColumns[Fact_Items]"
+                      dataType="i4"
+                      name="Fact_Items" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].ExternalColumns[Customer_ID]"
+                      dataType="i4"
+                      name="Customer_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].ExternalColumns[Order_ID]"
+                      dataType="i4"
+                      name="Order_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                      dataType="i4"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      dataType="i4"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input].ExternalColumns[NumOfItems]"
+                      dataType="i4"
+                      name="NumOfItems" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB Fact_Items.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\OLE DB Fact_Items.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\OLE DB Fact_Items.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TO Fact_Items\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load TO Fact_Items\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\Sort.Inputs[Sort Input].Columns[Order_ID]"
+                      cachedDataType="i4"
+                      cachedName="Order_ID"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[Order_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\Sort.Inputs[Sort Input].Columns[src_id]"
+                      cachedDataType="i4"
+                      cachedName="src_id"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[src_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\Sort.Inputs[Sort Input].Columns[customer_id]"
+                      cachedDataType="i4"
+                      cachedName="customer_id"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[customer_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\Sort.Inputs[Sort Input].Columns[order_date]"
+                      cachedDataType="dbDate"
+                      cachedName="order_date"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[order_date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output].Columns[Order_ID]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output].Columns[Order_ID]"
+                      name="Order_ID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[Order_ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output].Columns[src_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output].Columns[src_id]"
+                      name="src_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[src_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output].Columns[customer_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output].Columns[customer_id]"
+                      name="customer_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[customer_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output].Columns[order_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output].Columns[order_date]"
+                      name="order_date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output].Columns[order_date]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TO Fact_Items\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load TO Fact_Items\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\Sort 1.Inputs[Sort Input].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[order_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load TO Fact_Items\Sort 1.Inputs[Sort Input].Columns[item_id]"
+                      cachedDataType="i4"
+                      cachedName="item_id"
+                      lineageId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[item_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load TO Fact_Items\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\Sort 1.Outputs[Sort Output].Columns[order_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\Sort 1.Outputs[Sort Output].Columns[order_id]"
+                      name="order_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[order_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load TO Fact_Items\Sort 1.Outputs[Sort Output].Columns[item_id]"
+                      dataType="i4"
+                      lineageId="Package\Load TO Fact_Items\Sort 1.Outputs[Sort Output].Columns[item_id]"
+                      name="item_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output].Columns[item_id]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load TO Fact_Items.Paths[Aggregate Output 1]"
+              endId="Package\Load TO Fact_Items\OLE DB Fact_Items.Inputs[OLE DB Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\Load TO Fact_Items\NUM_Items.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Load TO Fact_Items.Paths[Derived Column Output]"
+              endId="Package\Load TO Fact_Items\DIM_DATE.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Load TO Fact_Items\DATE KEY.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load TO Fact_Items.Paths[Lookup Match Output]"
+              endId="Package\Load TO Fact_Items\DIM_Customer.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load TO Fact_Items\DIM_DATE.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load TO Fact_Items.Paths[Lookup Match Output1]"
+              endId="Package\Load TO Fact_Items\NUM_Items.Inputs[Aggregate Input 1]"
+              name="Lookup Match Output"
+              startId="Package\Load TO Fact_Items\DIM_Customer.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load TO Fact_Items.Paths[Merge Join Output]"
+              endId="Package\Load TO Fact_Items\DATE KEY.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\Load TO Fact_Items\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Load TO Fact_Items.Paths[OLE DB Source Output]"
+              endId="Package\Load TO Fact_Items\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load TO Fact_Items\OLE DB DIM_Order_Items.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load TO Fact_Items.Paths[OLE DB Source Output1]"
+              endId="Package\Load TO Fact_Items\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load TO Fact_Items\OLE DB DIM_Orders.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load TO Fact_Items.Paths[Sort Output]"
+              endId="Package\Load TO Fact_Items\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Load TO Fact_Items\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Load TO Fact_Items.Paths[Sort Output1]"
+              endId="Package\Load TO Fact_Items\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Load TO Fact_Items\Sort 1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\Load TO Fact_Items"
+          TopLeft="387.499978827935,219.266665141914" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load TO Fact_Items">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Load TO Fact_Items\OLE DB DIM_Orders"
+          TopLeft="152.499991667768,15.5999998915195" />
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\Load TO Fact_Items\NUM_Items"
+          TopLeft="74.1666626143789,364.866664129429" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Load TO Fact_Items\Merge Join"
+          TopLeft="284.166651140485,146.466665648156" />
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\Load TO Fact_Items\DIM_Customer"
+          TopLeft="284.166651140485,357.06666418367" />
+        <NodeLayout
+          Size="201.6,41.6"
+          Id="Package\Load TO Fact_Items\OLE DB DIM_Order_Items"
+          TopLeft="346.666647725636,14.7333332308796" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Load TO Fact_Items\Sort 1"
+          TopLeft="508.333305559225,83.1999994214376" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Load TO Fact_Items\OLE DB Fact_Items"
+          TopLeft="109.166660702063,461.933330121106" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Load TO Fact_Items\Sort"
+          TopLeft="177.499990301827,81.4666661001577" />
+        <NodeLayout
+          Size="131.2,41.6"
+          Id="Package\Load TO Fact_Items\DIM_DATE"
+          TopLeft="286.666651003891,279.933331386712" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Load TO Fact_Items\DATE KEY"
+          TopLeft="286.666651003891,213.199998517434" />
+        <EdgeLayout
+          Id="Package\Load TO Fact_Items.Paths[Merge Join Output]"
+          TopLeft="350.216651072188,188.066665648156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.1333328692781"
+              Start="0,0"
+              End="0,17.6333328692781">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.6333328692781" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load TO Fact_Items.Paths[Lookup Match Output1]"
+          TopLeft="284.166651140485,381.766664156549">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-76.3999885261061,0"
+              Start="0,0"
+              End="-68.8999885261061,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-68.8999885261061,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-82.6413809818031,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load TO Fact_Items.Paths[Lookup Match Output]"
+          TopLeft="355.216651072188,321.533331386712">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.5333327969578"
+              Start="0,0"
+              End="0,28.0333327969578">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.0333327969578" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,8.21197889847889,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load TO Fact_Items.Paths[Derived Column Output]"
+          TopLeft="351.866651003891,254.799998517434">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.133332869278"
+              Start="0,0"
+              End="0,17.633332869278">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.633332869278" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load TO Fact_Items.Paths[Aggregate Output 1]"
+          TopLeft="140.966662614379,406.466664129429">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53.3999980876841,55.466665991677"
+              Start="0,0"
+              End="53.3999980876841,47.966665991677">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.7333329958385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.7333329958385"
+                    Point2="0,27.7333329958385"
+                    Point3="4,27.7333329958385" />
+                  <mssgle:LineSegment
+                    End="49.3999980876841,27.7333329958385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.3999980876841,27.7333329958385"
+                    Point2="53.3999980876841,27.7333329958385"
+                    Point3="53.3999980876841,31.7333329958385" />
+                  <mssgle:LineSegment
+                    End="53.3999980876841,47.966665991677" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load TO Fact_Items.Paths[Sort Output1]"
+          TopLeft="508.333305559225,103.999999421438">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-94.56665441874,63.2666662267181"
+              Start="0,0"
+              End="-87.06665441874,63.2666662267181">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-43.28332720937,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-43.28332720937,0"
+                    Point2="-47.28332720937,0"
+                    Point3="-47.28332720937,4" />
+                  <mssgle:LineSegment
+                    End="-47.28332720937,59.2666662267181" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-47.28332720937,59.2666662267181"
+                    Point2="-47.28332720937,63.2666662267181"
+                    Point3="-51.28332720937,63.2666662267181" />
+                  <mssgle:LineSegment
+                    End="-87.06665441874,63.2666662267181" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load TO Fact_Items.Paths[Sort Output]"
+          TopLeft="226.299990301828,123.066666100158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="102.399994171991,23.399999547998"
+              Start="0,0"
+              End="102.399994171991,15.899999547998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.86878021991105" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.86878021991105"
+                    Point2="0,13.868780219911"
+                    Point3="4,13.868780219911" />
+                  <mssgle:LineSegment
+                    End="98.3999941719912,13.868780219911" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.3999941719912,13.868780219911"
+                    Point2="102.399994171991,13.868780219911"
+                    Point3="102.399994171991,17.868780219911" />
+                  <mssgle:LineSegment
+                    End="102.399994171991,15.899999547998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load TO Fact_Items.Paths[OLE DB Source Output1]"
+          TopLeft="240.499991667768,57.1999998915195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.2000013659404,24.2666662086381"
+              Start="0,0"
+              End="-14.2000013659404,16.7666662086381">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.13333310431906" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.13333310431906"
+                    Point2="0,12.1333331043191"
+                    Point3="-4,12.1333331043191" />
+                  <mssgle:LineSegment
+                    End="-10.2000013659404,12.1333331043191" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.2000013659404,12.1333331043191"
+                    Point2="-14.2000013659404,12.1333331043191"
+                    Point3="-14.2000013659404,16.1333331043191" />
+                  <mssgle:LineSegment
+                    End="-14.2000013659404,16.7666662086381" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load TO Fact_Items.Paths[OLE DB Source Output]"
+          TopLeft="447.466647725636,56.3333332308796">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114.06665783359,26.866666190558"
+              Start="0,0"
+              End="114.06665783359,19.366666190558">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.43333309527902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.43333309527902"
+                    Point2="0,13.433333095279"
+                    Point3="4,13.433333095279" />
+                  <mssgle:LineSegment
+                    End="110.06665783359,13.433333095279" />
+                  <mssgle:CubicBezierSegment
+                    Point1="110.06665783359,13.433333095279"
+                    Point2="114.06665783359,13.433333095279"
+                    Point3="114.06665783359,17.433333095279" />
+                  <mssgle:LineSegment
+                    End="114.06665783359,19.366666190558" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load TO Fact_Items\OLE DB DIM_Orders">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load TO Fact_Items\DIM_Customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DIM].[DIM_Customer]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load TO Fact_Items\OLE DB DIM_Order_Items">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load TO Fact_Items\OLE DB Fact_Items">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load TO Fact_Items\DIM_DATE">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DIM].[D_Date]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
