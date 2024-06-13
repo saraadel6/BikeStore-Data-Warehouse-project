@@ -21,9 +21,10 @@ The repository includes a thorough data warehouse project for Bike Stores. This 
 ![PowerBI](https://github.com/saraadel6/BikeStore-Data-Warehouse-project/assets/101582885/bb0efeb9-cb33-4f6a-a401-04cfd28dae5a)
 
 
+
 ## Team Members:
-[Sara Adel](https://github.com/saraadel6)
-[Mai Mohammed](https://github.com/MaiMuhammad)
-[Mariam Ramadan]
-[Doha Tarek](https://github.com/Doha-Tarek155)
+[Sara Adel](https://github.com/saraadel6) -
+[Mai Mohammed](https://github.com/MaiMuhammad) -
+[Mariam Ramadan] -
+[Doha Tarek](https://github.com/Doha-Tarek155) -
 [Hend Ahmed](https://github.com/LifelongLearner-HEND)
