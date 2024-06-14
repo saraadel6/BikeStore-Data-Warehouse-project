@@ -1,6 +1,5 @@
 # BikeStore-Data-Warehouse-project
-
-The repository includes a thorough data warehouse project for Bike Stores. This project models important business processes from the BikeStores database, such as customer information, orders, order items, products, and staff members. Our goal is to support detailed analysis and reporting to enable informed decision-making and enhance operations at all stores.
+This project involves the design and implementation of a data warehouse using Microsoft SQL Server and SSIS. The data warehouse is designed to extract key performance indicators (KPIs) using the BikeStore database as the source OLTP system.
 
 
 
@@ -23,8 +22,10 @@ The repository includes a thorough data warehouse project for Bike Stores. This 
 
 
 ## Team Members:
-[Sara Adel](https://github.com/saraadel6) -
-[Mai Mohammed](https://github.com/MaiMuhammad) -
-[Mariam Ramadan] -
-[Doha Tarek](https://github.com/Doha-Tarek155) -
-[Hend Ahmed](https://github.com/LifelongLearner-HEND)
+- [Sara Adel](https://github.com/saraadel6) 
+- [Mai Mohamed](https://github.com/MaiMuhammad)
+- Mariam Ramadan
+- [Doha Tarek](https://github.com/Doha-Tarek155)
+- [Hend Ahmed](https://github.com/LifelongLearner-HEND)
+
+
