@@ -24,7 +24,7 @@ This project involves the design and implementation of a data warehouse using Mi
 ## Team Members:
 - [Sara Adel](https://github.com/saraadel6) 
 - [Mai Mohamed](https://github.com/MaiMuhammad)
-- Mariam Ramadan
+- [Mariam Ramadan](https://github.com/Mariamramdan)
 - [Doha Tarek](https://github.com/Doha-Tarek155)
 - [Hend Ahmed](https://github.com/LifelongLearner-HEND)
 
